@@ -29,4 +29,15 @@ describe("Inbox", () => {
 
     assert.equal(initialMessage, message);
   });
+
+  it("can change the message", async () => {
+    const mockMessage = "mock message";
+    const res = await inbox.methods.setMessage(mockMessage).send({
+      from: accounts[0],
+    });
+    console.log(res.transactionHash);
+    const message = await inbox.methods.message().call();
+
+    assert.equal(mockMessage, message);
+  });
 });
