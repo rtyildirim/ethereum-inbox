@@ -3,7 +3,10 @@ const Web3 = require("web3");
 
 const { abi, evm } = require("./compile");
 
-provider = new HDWalletProvider("YOUR_MNEMONIC", "YOUR_INFURA_URL");
+provider = new HDWalletProvider(
+  process.env.MNEMONIC,
+  process.env.PROVIDER_ENDPOINT
+);
 
 const web3 = new Web3(provider);
 
